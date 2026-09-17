@@ -164,4 +164,4 @@ Call Shield is designed according to **OWASP Mobile Application Security (MASVS)
 - **Created with ❤️ & security in mind by**: **Sahil Kumar**
 - **LinkedIn**: [linkedin.com/in/sahilkumargarg](https://www.linkedin.com/in/sahilkumargarg/)
 - **GitHub**: [github.com/SahilKumarGarg](https://github.com/SahilKumarGarg)
-- **Support / Donations**: [PayPal](https://paypal.me/sahilkumargarg) | UPI: `sahilgarg50@oksbi`
+- **Support**: [PayPal](https://paypal.me/sahilkumargarg) | UPI: `sahilgarg50@oksbi`
