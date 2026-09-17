@@ -1,0 +1,876 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.coordinatorlayout.widget.CoordinatorLayout 
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#0F172A">
+
+    <com.google.android.material.appbar.AppBarLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#1E293B">
+
+        <com.google.android.material.appbar.MaterialToolbar
+            android:id="@+id/topAppBar"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            app:contentInsetStart="16dp"
+            app:menu="@menu/menu_main">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:orientation="horizontal"
+                android:gravity="center_vertical">
+
+                <androidx.appcompat.widget.AppCompatImageView
+                    android:id="@+id/ivToolbarLogo"
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:src="@drawable/ic_callshield_logo"
+                    app:srcCompat="@drawable/ic_callshield_logo"
+                    android:contentDescription="Call Shield Logo" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical"
+                    android:layout_marginStart="12dp">
+
+                    <TextView
+                        android:id="@+id/tvToolbarTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Call Shield"
+                        android:textSize="18sp"
+                        android:textStyle="bold"
+                        android:textColor="#F8FAFC" />
+
+                    <TextView
+                        android:id="@+id/tvToolbarSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Offline Spam Screener"
+                        android:textSize="11sp"
+                        android:textColor="#94A3B8" />
+
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </com.google.android.material.appbar.MaterialToolbar>
+
+        <com.google.android.material.tabs.TabLayout
+            android:id="@+id/tabLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#1E293B"
+            app:tabMode="fixed"
+            app:tabGravity="fill"
+            app:tabIndicatorColor="#3B82F6"
+            app:tabIndicatorHeight="3dp"
+            app:tabSelectedTextColor="#60A5FA"
+            app:tabTextColor="#94A3B8">
+
+            <com.google.android.material.tabs.TabItem
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Dashboard" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabRulesItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Rules" />
+
+            <com.google.android.material.tabs.TabItem
+                android:id="@+id/tabLogsItem"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Activity Log" />
+
+        </com.google.android.material.tabs.TabLayout>
+
+    </com.google.android.material.appbar.AppBarLayout>
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        app:layout_behavior="@string/appbar_scrolling_view_behavior">
+
+        <!-- ==================== TAB 1: DASHBOARD ==================== -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/containerDashboard"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Protection Status Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardStatus"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#334155"
+                    app:cardBackgroundColor="#1E293B"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="horizontal"
+                            android:gravity="center_vertical">
+
+                            <TextView
+                                android:id="@+id/tvStatusIcon"
+                                android:layout_width="44dp"
+                                android:layout_height="44dp"
+                                android:text="🛡️"
+                                android:textSize="32sp"
+                                android:gravity="center" />
+
+                            <LinearLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:orientation="vertical"
+                                android:layout_marginStart="12dp">
+
+                                <TextView
+                                    android:id="@+id/tvProtectionHeader"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Protection Inactive"
+                                    android:textSize="18sp"
+                                    android:textStyle="bold"
+                                    android:textColor="#EF4444" />
+
+                                <TextView
+                                    android:id="@+id/tvProtectionDesc"
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:text="Tap below to enable default spam screening"
+                                    android:textSize="13sp"
+                                    android:textColor="#94A3B8"
+                                    android:layout_marginTop="2dp" />
+
+                            </LinearLayout>
+
+                        </LinearLayout>
+
+                        <!-- Protection Enable/Manage Button -->
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnEnableRole"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Activate Call Screening"
+                            android:textColor="#FFFFFF"
+                            app:backgroundTint="#2563EB"
+                            app:cornerRadius="10dp"
+                            android:layout_marginTop="16dp" />
+
+                        <!-- Divider -->
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="1dp"
+                            android:background="#334155"
+                            android:layout_marginTop="16dp"
+                            android:layout_marginBottom="14dp" />
+
+                        <!-- Battery Optimization Section with Enable and Disable buttons -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="10dp"
+                            app:cardBackgroundColor="#0F172A"
+                            app:strokeWidth="1dp"
+                            app:strokeColor="#334155"
+                            android:layout_marginBottom="12dp">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="12dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="⚡ Battery Optimization"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#E2E8F0" />
+
+                                    <TextView
+                                        android:id="@+id/tvBatteryOptStatus"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Restricted"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#F59E0B"
+                                        android:paddingStart="8dp"
+                                        android:paddingEnd="8dp"
+                                        android:paddingTop="2dp"
+                                        android:paddingBottom="2dp"
+                                        android:background="#334155" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Keep background call screening active without Android system battery throttling."
+                                    android:textSize="11sp"
+                                    android:textColor="#94A3B8"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginBottom="10dp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:baselineAligned="false"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/btnEnableBatteryOpt"
+                                        android:layout_width="0dp"
+                                        android:layout_height="48dp"
+                                        android:layout_weight="1"
+                                        android:layout_marginEnd="5dp"
+                                        android:text="✓ Enable Exemption"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#FFFFFF"
+                                        android:gravity="center"
+                                        android:maxLines="1"
+                                        android:ellipsize="end"
+                                        android:paddingStart="6dp"
+                                        android:paddingEnd="6dp"
+                                        android:textAllCaps="false"
+                                        app:backgroundTint="#059669"
+                                        app:cornerRadius="8dp"
+                                        app:strokeWidth="1dp"
+                                        app:strokeColor="@android:color/transparent"
+                                        android:insetTop="0dp"
+                                        android:insetBottom="0dp" />
+
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/btnDisableBatteryOpt"
+                                        android:layout_width="0dp"
+                                        android:layout_height="48dp"
+                                        android:layout_weight="1"
+                                        android:layout_marginStart="5dp"
+                                        android:text="✕ Disable Exemption"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#EF4444"
+                                        android:gravity="center"
+                                        android:maxLines="1"
+                                        android:ellipsize="end"
+                                        android:paddingStart="6dp"
+                                        android:paddingEnd="6dp"
+                                        android:textAllCaps="false"
+                                        app:backgroundTint="#1E293B"
+                                        app:strokeColor="#EF4444"
+                                        app:strokeWidth="1dp"
+                                        app:cornerRadius="8dp"
+                                        android:insetTop="0dp"
+                                        android:insetBottom="0dp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                        <!-- Screen / Block Saved Contacts Section with Enable and Disable buttons -->
+                        <com.google.android.material.card.MaterialCardView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            app:cardCornerRadius="10dp"
+                            app:cardBackgroundColor="#0F172A"
+                            app:strokeWidth="1dp"
+                            app:strokeColor="#334155">
+
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:orientation="vertical"
+                                android:padding="12dp">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:orientation="horizontal"
+                                    android:gravity="center_vertical">
+
+                                    <TextView
+                                        android:layout_width="0dp"
+                                        android:layout_height="wrap_content"
+                                        android:layout_weight="1"
+                                        android:text="👥 Block Saved Contacts"
+                                        android:textSize="13sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#E2E8F0" />
+
+                                    <TextView
+                                        android:id="@+id/tvContactsStatus"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:text="Bypass (Off)"
+                                        android:textSize="11sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#94A3B8"
+                                        android:paddingStart="8dp"
+                                        android:paddingEnd="8dp"
+                                        android:paddingTop="2dp"
+                                        android:paddingBottom="2dp"
+                                        android:background="#334155" />
+
+                                </LinearLayout>
+
+                                <TextView
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:text="Enable to enforce blocking rules on saved contacts, or Disable to let all saved contacts bypass screening."
+                                    android:textSize="11sp"
+                                    android:textColor="#94A3B8"
+                                    android:layout_marginTop="4dp"
+                                    android:layout_marginBottom="10dp" />
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:baselineAligned="false"
+                                    android:gravity="center"
+                                    android:orientation="horizontal">
+
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/btnEnableContacts"
+                                        android:layout_width="0dp"
+                                        android:layout_height="48dp"
+                                        android:layout_weight="1"
+                                        android:layout_marginEnd="5dp"
+                                        android:text="✓ Enable (Grant)"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#FFFFFF"
+                                        android:gravity="center"
+                                        android:maxLines="1"
+                                        android:ellipsize="end"
+                                        android:paddingStart="6dp"
+                                        android:paddingEnd="6dp"
+                                        android:textAllCaps="false"
+                                        app:backgroundTint="#059669"
+                                        app:cornerRadius="8dp"
+                                        app:strokeWidth="1dp"
+                                        app:strokeColor="@android:color/transparent"
+                                        android:insetTop="0dp"
+                                        android:insetBottom="0dp" />
+
+                                    <com.google.android.material.button.MaterialButton
+                                        android:id="@+id/btnDisableContacts"
+                                        android:layout_width="0dp"
+                                        android:layout_height="48dp"
+                                        android:layout_weight="1"
+                                        android:layout_marginStart="5dp"
+                                        android:text="✕ Disable (Bypass)"
+                                        android:textSize="12sp"
+                                        android:textStyle="bold"
+                                        android:textColor="#EF4444"
+                                        android:gravity="center"
+                                        android:maxLines="1"
+                                        android:ellipsize="end"
+                                        android:paddingStart="6dp"
+                                        android:paddingEnd="6dp"
+                                        android:textAllCaps="false"
+                                        app:backgroundTint="#1E293B"
+                                        app:strokeColor="#EF4444"
+                                        app:strokeWidth="1dp"
+                                        app:cornerRadius="8dp"
+                                        android:insetTop="0dp"
+                                        android:insetBottom="0dp" />
+
+                                </LinearLayout>
+
+                            </LinearLayout>
+
+                        </com.google.android.material.card.MaterialCardView>
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Quick Stats Row -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="16dp">
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginEnd="6dp"
+                        app:cardCornerRadius="12dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="#334155"
+                        app:cardBackgroundColor="#1E293B">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Active Rules"
+                                android:textSize="11sp"
+                                android:textColor="#94A3B8" />
+
+                            <TextView
+                                android:id="@+id/tvStatRules"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="#38BDF8"
+                                android:layout_marginTop="2dp" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                    <com.google.android.material.card.MaterialCardView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:layout_marginStart="6dp"
+                        app:cardCornerRadius="12dp"
+                        app:strokeWidth="1dp"
+                        app:strokeColor="#334155"
+                        app:cardBackgroundColor="#1E293B">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:orientation="vertical"
+                            android:padding="12dp">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Screened Calls"
+                                android:textSize="11sp"
+                                android:textColor="#94A3B8" />
+
+                            <TextView
+                                android:id="@+id/tvStatLogs"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0"
+                                android:textSize="20sp"
+                                android:textStyle="bold"
+                                android:textColor="#F43F5E"
+                                android:layout_marginTop="2dp" />
+
+                        </LinearLayout>
+
+                    </com.google.android.material.card.MaterialCardView>
+
+                </LinearLayout>
+
+                <!-- Action Hub Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#334155"
+                    app:cardBackgroundColor="#1E293B"
+                    android:layout_marginBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Quick Actions"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:textColor="#F1F5F9" />
+
+                        <TextView
+                            android:id="@+id/tvRulesCount"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Loading rules..."
+                            android:textSize="13sp"
+                            android:textColor="#94A3B8"
+                            android:layout_marginTop="4dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnQuickAddRule"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="+ Add Custom Rule"
+                            android:textColor="#FFFFFF"
+                            app:backgroundTint="#2563EB"
+                            app:cornerRadius="10dp"
+                            android:layout_marginTop="14dp" />
+
+                        <com.google.android.material.button.MaterialButton
+                            android:id="@+id/btnDashboardManageRules"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                            android:text="📥 Import / 📤 Export Rules"
+                            android:textColor="#93C5FD"
+                            app:strokeColor="#3B82F6"
+                            app:cornerRadius="10dp"
+                            android:layout_marginTop="8dp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Offline Guarantee Card -->
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    app:cardCornerRadius="16dp"
+                    app:cardElevation="2dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#334155"
+                    app:cardBackgroundColor="#1E293B">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:padding="20dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="100% Offline Privacy Guarantee"
+                            android:textSize="15sp"
+                            android:textStyle="bold"
+                            android:textColor="#34D399" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Call Shield has ZERO internet permissions. No contacts, calls, or rules ever leave your device. All screening happens in under 5ms using your local encrypted database."
+                            android:textSize="13sp"
+                            android:textColor="#94A3B8"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- ==================== TAB 2: RULES ==================== -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/containerRules"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Local Blocking Rules"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#F8FAFC" />
+
+                        <TextView
+                            android:id="@+id/tvRulesSubHeader"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Manage your local prefix and number filters"
+                            android:textSize="13sp"
+                            android:textColor="#94A3B8" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnAddRuleTab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="+ Add"
+                        android:textColor="#FFFFFF"
+                        app:backgroundTint="#2563EB"
+                        app:cornerRadius="8dp" />
+
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:baselineAligned="false"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:layout_marginBottom="14dp">
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnExportRulesTab"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="44dp"
+                        android:layout_marginEnd="4dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:text="📤 Export Rules"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#93C5FD"
+                        app:strokeColor="#3B82F6"
+                        app:cornerRadius="8dp" />
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnImportRulesTab"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:minHeight="44dp"
+                        android:layout_marginStart="4dp"
+                        style="@style/Widget.MaterialComponents.Button.OutlinedButton"
+                        android:text="📥 Import Rules"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:textColor="#6EE7B7"
+                        app:strokeColor="#10B981"
+                        app:cornerRadius="8dp" />
+
+                </LinearLayout>
+
+                <!-- Empty State for Rules -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardEmptyRules"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"
+                    app:cardCornerRadius="12dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#334155"
+                    app:cardBackgroundColor="#1E293B"
+                    android:layout_marginBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="24dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="📋"
+                            android:textSize="36sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No Screening Rules Active"
+                            android:textColor="#F1F5F9"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Add your own custom prefix or load recommended rules to start blocking calls."
+                            android:textColor="#94A3B8"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Rules List -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvRules"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+        <!-- ==================== TAB 3: ACTIVITY LOG ==================== -->
+        <androidx.core.widget.NestedScrollView
+            android:id="@+id/containerLogs"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:visibility="gone"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:gravity="center_vertical"
+                    android:layout_marginBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Screening Activity Log"
+                            android:textSize="18sp"
+                            android:textStyle="bold"
+                            android:textColor="#F8FAFC" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Real-time call screening events intercepted"
+                            android:textSize="13sp"
+                            android:textColor="#94A3B8" />
+
+                    </LinearLayout>
+
+                    <com.google.android.material.button.MaterialButton
+                        android:id="@+id/btnClearLogs"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        style="@style/Widget.MaterialComponents.Button.TextButton"
+                        android:text="Clear Log"
+                        android:textColor="#F43F5E" />
+
+                </LinearLayout>
+
+                <!-- Empty State for Logs -->
+                <com.google.android.material.card.MaterialCardView
+                    android:id="@+id/cardEmptyLogs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:visibility="visible"
+                    app:cardCornerRadius="12dp"
+                    app:strokeWidth="1dp"
+                    app:strokeColor="#334155"
+                    app:cardBackgroundColor="#1E293B"
+                    android:layout_marginBottom="12dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical"
+                        android:gravity="center"
+                        android:padding="32dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="🛡️"
+                            android:textSize="40sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="No Calls Screened Yet"
+                            android:textColor="#F1F5F9"
+                            android:textSize="16sp"
+                            android:textStyle="bold"
+                            android:layout_marginTop="8dp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="When incoming calls match your active rules, they will be blocked before ringing and recorded here."
+                            android:textColor="#94A3B8"
+                            android:textSize="13sp"
+                            android:gravity="center"
+                            android:layout_marginTop="4dp" />
+
+                    </LinearLayout>
+
+                </com.google.android.material.card.MaterialCardView>
+
+                <!-- Logs List -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rvLogs"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:nestedScrollingEnabled="false" />
+
+            </LinearLayout>
+
+        </androidx.core.widget.NestedScrollView>
+
+    </FrameLayout>
+
+</androidx.coordinatorlayout.widget.CoordinatorLayout>

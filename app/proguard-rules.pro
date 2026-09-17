@@ -1,0 +1,2 @@
+-keep class com.sahil.callshield.data.** { *; }
+-keep class com.sahil.callshield.service.** { *; }

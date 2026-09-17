@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="20dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Import Rules into Local Database"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            android:textColor="#F8FAFC"
+            android:layout_marginBottom="4dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Paste previously exported JSON rules, or enter a list of phone prefixes (one per line, e.g. +91140909)."
+            android:textSize="12sp"
+            android:textColor="#94A3B8"
+            android:layout_marginBottom="16dp" />
+
+        <com.google.android.material.textfield.TextInputLayout
+            android:id="@+id/tilImportData"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="JSON Data or Prefixes"
+            style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+            app:boxStrokeColor="#10B981"
+            app:hintTextColor="#94A3B8"
+            android:layout_marginBottom="12dp">
+
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@+id/etImportData"
+                android:layout_width="match_parent"
+                android:layout_height="140dp"
+                android:gravity="top|start"
+                android:inputType="textMultiLine"
+                android:fontFamily="monospace"
+                android:textSize="12sp"
+                android:textColor="#F8FAFC" />
+
+        </com.google.android.material.textfield.TextInputLayout>
+
+        <CheckBox
+            android:id="@+id/cbMergeRules"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Merge with existing rules (keep current rules)"
+            android:textColor="#E2E8F0"
+            android:textSize="12sp"
+            android:checked="true"
+            android:layout_marginBottom="6dp" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Tip: You can also copy rules JSON from another device and paste here to synchronize blocking lists offline."
+            android:textSize="11sp"
+            android:textColor="#64748B" />
+
+    </LinearLayout>
+
+</ScrollView>

@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Call Shield</string>
+    <string name="status_rules_count">%1$d active rules enabled</string>
+    <string name="export_rules_summary">Exporting %1$d local blocking rules in portable JSON format.</string>
+    <string name="export_rules_clipboard">Copied %1$d rules JSON to clipboard!</string>
+    <string name="import_rules_success">Successfully imported %1$d rules into local database!</string>
+
+    <string name="status_protection_paused">Protection Paused</string>
+    <string name="status_protection_paused_desc">Screening is temporarily paused. Calls will ring normally.</string>
+    <string name="btn_protection_paused">⏸ Protection Paused (Tap to Resume)</string>
+
+    <string name="status_protection_active">Call Screening Active</string>
+    <string name="status_protection_active_desc">Incoming spam calls will be blocked in &lt; 5ms before ringing.</string>
+    <string name="btn_protection_active">✓ Protected (Active) — Tap to Manage / Pause</string>
+
+    <string name="status_protection_inactive">Protection Inactive</string>
+    <string name="status_protection_inactive_desc">Android requires Call Shield to be set as default spam screener.</string>
+    <string name="btn_protection_inactive">Activate Call Screening</string>
+
+    <string name="status_exempted">✓ Exempted</string>
+    <string name="status_restricted">⚠ Restricted</string>
+    <string name="status_disabled_in_app">Disabled in App</string>
+    <string name="btn_disable_exemption">✕ Disable Exemption</string>
+    <string name="btn_enable_exemption">✓ Enable Exemption</string>
+    <string name="btn_disabled">✕ Disabled</string>
+
+    <string name="status_screening_on">✓ Screening (ON)</string>
+    <string name="status_bypass_off">⚪ Bypass (Off)</string>
+    <string name="status_permission_needed">Permission Needed</string>
+    <string name="btn_enabled">✓ Enabled</string>
+    <string name="btn_disable_bypass">✕ Disable (Bypass)</string>
+    <string name="btn_enable_screening">✓ Enable Screening</string>
+    <string name="btn_disabled_bypassing">✕ Disabled (Bypassing)</string>
+    <string name="btn_grant_enable">✓ Grant &amp; Enable</string>
+    <string name="rule_saved_success">Rule \'%1$s\' saved successfully!</string>
+</resources>

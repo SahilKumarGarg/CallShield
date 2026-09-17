@@ -1,0 +1,48 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="48dp"
+    android:height="48dp"
+    android:viewportWidth="108"
+    android:viewportHeight="108">
+
+    <!-- Outer Shield Body -->
+    <path
+        android:fillColor="#1D4ED8"
+        android:pathData="M54,20 C68,26 77,28 81,31 C81,58 71,74 54,84 C37,74 27,58 27,31 C31,28 40,26 54,20 Z" />
+
+    <!-- Top & Left Vibrant Shield Highlight -->
+    <path
+        android:fillColor="#2563EB"
+        android:pathData="M54,22 C66,27 74,29 78,32 C78,56 68,71 54,80 C40,71 30,56 30,32 C34,29 42,27 54,22 Z" />
+
+    <!-- Inner Shield Depth Accent -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M54,25 C63,29 70,31 74,34 C74,53 65,67 54,75 C43,67 34,53 34,34 C38,31 45,29 54,25 Z" />
+    
+    <!-- Inner Dark Core for Handset Contrast -->
+    <path
+        android:fillColor="#1E40AF"
+        android:pathData="M54,28 C61,32 67,34 70,36 C70,51 62,63 54,71 C46,63 38,51 38,36 C41,34 47,32 54,28 Z" />
+
+    <!-- High-Contrast Phone Handset Silhouette (White) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M46,39 C45.2,39 44,39.8 43.6,41 C42.6,43.6 44,48.2 48,52.2 C52,56.2 56.6,57.6 59.2,56.6 C60.4,56.2 61.2,55 61.2,54.2 C61.2,53.4 60,52.2 58.8,51.4 C57.8,50.8 56.8,50.6 56.2,51.2 C55.6,51.9 54.4,51.7 52.8,50.1 C51.2,48.5 51,47.3 51.7,46.7 C52.3,46.1 52.1,45.1 51.5,44.2 C50.7,43.1 49.5,42 48.7,42 C48.3,42 46.8,39 46,39 Z" />
+
+    <!-- Verified Protection Badge Outer Rim (Dark Border #0B1329) -->
+    <path
+        android:fillColor="#0B1329"
+        android:pathData="M71.5,65 m-12.5,0 a12.5,12.5 0 1,0 25,0 a12.5,12.5 0 1,0 -25,0" />
+
+    <!-- Verified Protection Badge (Green Circle #10B981) -->
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M71.5,65 m-10.5,0 a10.5,10.5 0 1,0 21,0 a10.5,10.5 0 1,0 -21,0" />
+
+    <!-- Verified Badge Inner Checkmark (White) -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M67.5,65.2 L70.2,67.8 L75.8,62.2 L77.2,63.6 L70.2,70.6 L66.1,66.6 Z" />
+</vector>
+
