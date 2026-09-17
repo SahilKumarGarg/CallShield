@@ -3,7 +3,7 @@
 
 Call Shield is a lightweight, zero-telemetry Android application and screening engine that intercepts incoming phone calls at the cellular radio level before the ringer sounds. Powered by Android's native `CallScreeningService`, it gives you complete control over which numbers ring your phone without ever exposing your contacts, phone records, or call metadata to external servers.
 
-Download Call Shield.apk installed from Google Drive using link below: 
+Download Call Shield.apk installer from Google Drive using link below: 
 https://drive.google.com/file/d/13tv5H-8MNKW-p5d_SYoCs_w84NFI-fWz/view?usp=sharing
 ---
 
